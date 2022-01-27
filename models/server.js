@@ -4,6 +4,9 @@ const http = require('http'); // Servidor de sockets
 const socketio = require('socket.io');
 const path = require('path');
 const Sockets = require('./sockets');
+const cors = require('cors');
+
+
 
 class Server {
 
@@ -23,6 +26,9 @@ class Server {
     middlewares() {
         // Desplegar el directorio publico con express
         this.app.use( express.static( path.resolve( __dirname, '../public')))
+
+        // cors
+        this.app.use( cors());
     }
 
     configurarSockets() {
